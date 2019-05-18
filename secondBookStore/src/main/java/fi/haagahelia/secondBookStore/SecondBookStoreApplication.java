@@ -25,11 +25,14 @@ public class SecondBookStoreApplication {
 		crepository.save( new Category("Children"));
 		crepository.save( new Category("Non-fiction"));
 		crepository.save( new Category("Fiction"));
+		crepository.save(new Category("Comic"));
+		crepository.save(new Category("Crime"));
+		crepository.save(new Category("Education"));
 		
-		Book b1 = new Book("If tomorrow comes","Sydney Sheldon", 1985,12223, 35);
-		Book b2 = new Book("The Lord of the Rings","J. R. R. Tolkien", 1937,12224, 45);
-		Book b3 = new Book("Frankenstein","Mary Shelley", 1823,12225, 25);
-		Book b4 = new Book("Hamlet"," William Shakespeare", 1609,12221, 55);
+		Book b1 = new Book("If tomorrow comes","Sydney Sheldon", 1985,crepository.findByName("Crime").get(0),12223, 35);
+		Book b2 = new Book("The Lord of the Rings","J. R. R. Tolkien", 1937,crepository.findByName("Non-fiction").get(0),12224, 45);
+		Book b3 = new Book("Frankenstein","Mary Shelley", 1823,crepository.findByName("Education").get(0),12225, 25);
+		Book b4 = new Book("Hamlet"," William Shakespeare", 1609,crepository.findByName("Comic").get(0),12221, 55);
 
 		
 		repository.save(b1);
