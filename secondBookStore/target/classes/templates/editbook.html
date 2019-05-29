@@ -2,10 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 
-<title>Edit Book</title>
-<meta http-equiv = "Content-Type" contect = "text/html" charset="UTF-8">
+<title>Book List</title>
+<meta http-equiv = "Content-Type" content = "text/html" charset="UTF-8"/>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 <body>
+<div class="container">
+<br/>
 <h1>Edit Book</h1>
 <div>
 <form th:object="${book}" th:action="@{../save}" action="#" method="post">
@@ -26,13 +29,14 @@
 <input type="text" th:field="*{price}" />
 <br>
 <label for="catlist">Category</label>
-			<select id="catlist" th:field="*{category}" class="form-control">
-				<option th:each="category: ${category}"
-					th:value="${category.categoryid}" th:text="${category.name}"></option>
-<input type="submit" class="btn btn-success" value="Save"></input>
+<select id="catlist" th:field="*{category}" class="form-control">
+					<option th:each="category: ${categories}" th:value="${category.categoryid}"
+						th:text="${category.name}"></option>
+				</select>
+				<input type="submit" class="btn btn-success" value="Save"></input>
 
 </form>
 </div>
-
+</div>
 </body>
 </html>

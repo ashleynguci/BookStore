@@ -30,23 +30,22 @@ public class BookController {
 		  //return name of template
 	}
 	
-	// RESTful service to get all book
-	@RequestMapping(value ="/books", method = RequestMethod.GET)
-	public @ResponseBody List<Book> bookListRest(){
+//	// RESTful service to get all book
+	@RequestMapping(value ="/books", method = RequestMethod.GET)	public @ResponseBody List<Book> bookListRest(){
 		return (List<Book>) repository.findAll();
 	}
-	
-
-	// RESTful service to get student by id
+//	
+//
+//	// RESTful service to get student by id
     @RequestMapping(value="/book/{id}", method = RequestMethod.GET)
     public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long bookId) {	
-    	return repository.findById(bookId);
+   	return repository.findById(bookId);
     }       
    
 	@RequestMapping(value="/add")
 	public String addBook(Model model) {
 		model.addAttribute("book",new Book());
-		model.addAttribute("category", crepository.findAll());
+		model.addAttribute("categories", crepository.findAll());
 		return "addbook";
 	}
 	@RequestMapping(value="/save", method=RequestMethod.POST)
@@ -63,9 +62,10 @@ public class BookController {
 	@RequestMapping(value = "/edit/{id}")
 	public String edit(@PathVariable("id") Long bookId, Model model){
 	model.addAttribute("book", repository.findById(bookId));
-	model.addAttribute("category", crepository.findAll());
+	model.addAttribute("categories", crepository.findAll());
 	
 	return "editbook";
 	
 	}
+	
 }

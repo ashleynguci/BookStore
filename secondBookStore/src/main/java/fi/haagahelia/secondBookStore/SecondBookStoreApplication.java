@@ -1,6 +1,6 @@
 package fi.haagahelia.secondBookStore;
 
-import org.apache.commons.logging.Log;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +10,8 @@ import fi.haagahelia.secondBookStore.domain.Book;
 import fi.haagahelia.secondBookStore.domain.BookRepository;
 import fi.haagahelia.secondBookStore.domain.Category;
 import fi.haagahelia.secondBookStore.domain.CategoryRepository;
+import fi.haagahelia.secondBookStore.domain.User;
+import fi.haagahelia.secondBookStore.domain.UserRepository;
 
 @SpringBootApplication
 public class SecondBookStoreApplication {
@@ -19,7 +21,7 @@ public class SecondBookStoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(BookRepository repository,CategoryRepository crepository) {
+	public CommandLineRunner demo(BookRepository repository,CategoryRepository crepository,UserRepository urepository) {
 	return (args) -> {
 		
 		
@@ -40,8 +42,13 @@ public class SecondBookStoreApplication {
 		repository.save(b2);
 		repository.save(b3);
 		repository.save(b4);
-		
-	
+		// Create users: admin/admin user/user
+		User user1 = new User("user", "$2a$10$fV9K5C3ukO6U70tUrhhAKuo2f4qNFrnbGwBL4m1PN4cysXLhpcFsG", "USER");
+		User user2 = new User("admin", "$2a$10$Qo7EVRUdmp1aWLs0aCyStevP4AcbcibExWKtg32IJwK0oJGnIA6Jy", "ADMIN");
+		urepository.save(user1);
+		urepository.save(user2);
+	//user hello teacher
+		//admin server programming
 	};
 	}
 
