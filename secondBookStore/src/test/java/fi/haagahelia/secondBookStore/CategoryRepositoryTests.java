@@ -29,5 +29,13 @@ public class CategoryRepositoryTests {
         assertThat(categories.get(0).getCategoryid()).isNotNull();
     }
     
+    @Test
+    public void deleteCategory() {
+		List<Category> categories = crepository.findByName("Fiction");
+		assertThat(categories).hasSize(1);
+    	crepository.deleteById((long) 3);
+    	categories = crepository.findByName("Fiction");
+    	assertThat(categories).hasSize(0);
+    }
   
 }

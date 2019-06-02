@@ -30,5 +30,12 @@ public class UserRepositoryTests {
         assertThat(users.getRole()).isEqualTo("USER");
     }
     
+    @Test
+    public void addNewUser() {
+    	User user = new User("TestingUser", "HelloWorld", "TesingtRole");
+    	urepository.save(user);
+    	assertThat(user.getId()).isNotNull();
+    }  
+    
   
 }
